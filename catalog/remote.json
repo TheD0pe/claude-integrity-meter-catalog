@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-14T10:40:24.379Z",
+  "source": "https://raw.githubusercontent.com/anthropics/claude-plugins-official/main/.claude-plugin/marketplace.json",
+  "officialPlugins": 317,
+  "dropped": [],
+  "starter": [
+    {
+      "plugin": "claude-code-setup",
+      "marketplace": "claude-plugins-official",
+      "title": "Claude Code Setup",
+      "level": "beginner",
+      "why": "Projeni tarayıp sana uygun hook, skill, MCP ve alt-ajan önerir. Nereden başlayacağını bilmiyorsan ilk adım."
+    },
+    {
+      "plugin": "claude-md-management",
+      "marketplace": "claude-plugins-official",
+      "title": "CLAUDE.md Yönetimi",
+      "level": "beginner",
+      "why": "CLAUDE.md dosyalarının kalitesini denetler ve güncel tutar. Bu uygulamanın ölçtüğü kuralları sağlam yazmana yardım eder."
+    },
+    {
+      "plugin": "commit-commands",
+      "marketplace": "claude-plugins-official",
+      "title": "Git Commit Komutları",
+      "level": "beginner",
+      "why": "Commit, push ve PR açma işini tek komuta bağlar."
+    },
+    {
+      "plugin": "context7",
+      "marketplace": "claude-plugins-official",
+      "title": "Context7 (güncel kütüphane dokümanı)",
+      "level": "beginner",
+      "why": "Kullandığın kütüphanenin sürüme özel güncel dokümanını getirir; eski bilgiyle kod yazmasını azaltır. MCP sunucusu, yerel Node gerekmez."
+    },
+    {
+      "plugin": "github",
+      "marketplace": "claude-plugins-official",
+      "title": "GitHub (resmî MCP)",
+      "level": "beginner",
+      "why": "Issue, PR, kod arama ve depo yönetimini doğrudan Claude'dan yapar. MCP sunucusu."
+    },
+    {
+      "plugin": "code-review",
+      "marketplace": "claude-plugins-official",
+      "title": "Kod İnceleme",
+      "level": "beginner",
+      "why": "PR'ları birden çok uzman ajanla inceler, yanlış alarmları güven puanıyla eler."
+    },
+    {
+      "plugin": "feature-dev",
+      "marketplace": "claude-plugins-official",
+      "title": "Özellik Geliştirme Akışı",
+      "level": "beginner",
+      "why": "Yeni özelliği keşif, mimari ve kalite incelemesi adımlarıyla ilerletir (3 ajan)."
+    },
+    {
+      "plugin": "security-guidance",
+      "marketplace": "claude-plugins-official",
+      "title": "Güvenlik Rehberi",
+      "level": "beginner",
+      "why": "Claude'un yazdığı kodda enjeksiyon, XSS, sızan gizli anahtar gibi açıkları uyarır."
+    },
+    {
+      "plugin": "explanatory-output-style",
+      "marketplace": "claude-plugins-official",
+      "title": "Açıklamalı Çıktı",
+      "level": "beginner",
+      "why": "Öğrenmek istiyorsan: Claude yaptığı uygulama seçimlerini ve kod desenlerini açıklar."
+    },
+    {
+      "plugin": "frontend-design",
+      "marketplace": "claude-plugins-official",
+      "title": "Arayüz Tasarımı",
+      "level": "all",
+      "why": "Web arayüzlerinde sıradan 'yapay zeka görünümünden' kaçınan, özenli tasarım becerisi."
+    },
+    {
+      "plugin": "playwright",
+      "marketplace": "claude-plugins-official",
+      "title": "Playwright (tarayıcı otomasyonu)",
+      "level": "all",
+      "why": "Claude'un web sayfalarını açıp tıklamasını, form doldurmasını ve ekran görüntüsü almasını sağlar. MCP sunucusu."
+    },
+    {
+      "plugin": "skill-creator",
+      "marketplace": "claude-plugins-official",
+      "title": "Skill Oluşturucu",
+      "level": "all",
+      "why": "Kendi skill'ini yazar, geliştirir ve performansını ölçer."
+    },
+    {
+      "plugin": "hookify",
+      "marketplace": "claude-plugins-official",
+      "title": "Hookify",
+      "level": "all",
+      "why": "İstemediğin davranışları engelleyen hook'ları, sade markdown kurallarıyla yazdırır."
+    }
+  ],
+  "signals": {
+    "git": {
+      "reason": "bilgisayarında git depoları var",
+      "plugins": [
+        "commit-commands",
+        "github",
+        "code-review"
+      ]
+    },
+    "gh": {
+      "reason": "GitHub CLI (gh) kurulu",
+      "plugins": [
+        "github"
+      ]
+    },
+    "typescript": {
+      "reason": "TypeScript/JavaScript projelerin var",
+      "plugins": [
+        "typescript-lsp"
+      ]
+    },
+    "react": {
+      "reason": "React/Next.js projelerin var",
+      "plugins": [
+        "frontend-design",
+        "playwright"
+      ]
+    },
+    "python": {
+      "reason": "Python projelerin var",
+      "plugins": [
+        "pyright-lsp"
+      ]
+    }
+  },
+  "glossary": [
+    {
+      "term": "Eklenti (plugin)",
+      "text": "Skill, MCP, ajan ve komutları tek pakette getiren kurulum birimi. `claude plugin install` ile kurulur."
+    },
+    {
+      "term": "Skill",
+      "text": "Claude'un ihtiyaç duyunca yüklediği talimat ve dosya paketi. Her konuşmada bağlamı doldurmaz, gerektiğinde devreye girer."
+    },
+    {
+      "term": "MCP",
+      "text": "Claude'u dış araca ve veriye (GitHub, tarayıcı, veritabanı…) bağlayan sunucu."
+    },
+    {
+      "term": "CLAUDE.md",
+      "text": "Claude'un her oturumda okuduğu kalıcı kurallar dosyası. Kısa ve net tutulmalı."
+    },
+    {
+      "term": "Hook",
+      "text": "Belirli olaylarda (komut öncesi, oturum sonu…) kendiliğinden çalışan komut."
+    },
+    {
+      "term": "Alt-ajan (agent)",
+      "text": "Ayrı bağlamda çalışan uzman yardımcı; ana konuşmayı şişirmeden iş yapar."
+    }
+  ]
+}
