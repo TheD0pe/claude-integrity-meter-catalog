@@ -25,7 +25,11 @@ async function loadOfficial() {
   const alive = bundled.starter.filter((s) => s.marketplace !== 'claude-plugins-official' || names.has(s.plugin));
   const dropped = bundled.starter.filter((s) => !alive.includes(s)).map((s) => s.plugin);
   const out = { version: bundled.version, generatedAt: new Date().toISOString(), source: src, officialPlugins: mp.plugins.length, dropped, starter: alive, signals: bundled.signals, glossary: bundled.glossary };
-  fs.writeFileSync(path.join(__dirname, '..', 'catalog', 'remote.json'), JSON.stringify(out, null, 2));
+  const target = path.join(__dirname, '..', 'catalog', 'remote.json');
+  let prev = null; try { prev = JSON.parse(fs.readFileSync(target, 'utf8')); } catch { /* ilk çalıştırma */ }
+  const strip = (o) => JSON.stringify({ ...o, generatedAt: undefined });
+  if (prev && strip(prev) === strip(out)) { console.log('İçerik değişmedi, remote.json yazılmadı (günlük gereksiz commit önlendi).'); return; }
+  fs.writeFileSync(target, JSON.stringify(out, null, 2));
   console.log(`catalog/remote.json yazıldı: ${alive.length}/${bundled.starter.length} başlangıç girdisi canlı, kaynak ${src} (${mp.plugins.length} eklenti)`);
   if (dropped.length) console.warn('Katalogdan kalkan girdiler (starter.json güncellenmeli):', dropped.join(', '));
   if (dropped.length > bundled.starter.length * 0.3) { console.error('Girdilerin %30’dan fazlası kalktı: elle inceleme gerekir.'); process.exit(2); }
